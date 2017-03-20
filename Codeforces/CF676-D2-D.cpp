@@ -19,23 +19,14 @@ bool horcon(char a, char b)
 {
 	if(a == '*' || b == '*') 
 		return 0;
-	if((a == '+' || a =='>'|| a == '-' || (string("RDLU").find(a) != -1 && a != 'R'))
-		&&
-		(b == '+' || b =='<'|| b == '-'|| (string("RDLU").find(b) != -1 && b != 'L'))
-		)
-		return 1;
-	return 0;
+	return ((a == '+' || a =='>'|| a == '-' || (string("RDLU").find(a) != -1 && a != 'R'))&&(b == '+' || b =='<'|| b == '-'|| (string("RDLU").find(b) != -1 && b != 'L')));
 }
 bool vertcon(char a, char b)
 {
 	if(a == '*' || b == '*') 
 		return 0;
-	if((a== '+' || a=='v'|| a=='|' || (string("RDLU").find(a)!=-1 && a!='D'))
-		&&
-		(b== '+' || b=='^'|| b=='|'|| (string("RDLU").find(b)!=-1 && b!='U'))
-		)
-		return 1;
-	return 0;
+	return ((a == '+' || a =='v'|| a == '|' || (string("RDLU").find(a) != -1 && a != 'D'))&&(b == '+' || b == '^'|| b=='|'|| (string("RDLU").find(b) != -1 && b != 'U')));
+
 }
 int n,m,i,j,ii,jj;
 string arr[4][1000];
@@ -64,7 +55,7 @@ int main()
 			}
 
 		}
-		int cnt=0;
+		int cnt=0,i,j,k;
 		bool fl = 0;
 		pair<int,pair<int, int> > bloc={1000000,{1000000,1000000}}, cur ,q;
 		cin>>i>>j>>ii>>jj;
@@ -91,39 +82,25 @@ int main()
 					break;
 				}
 				vis[cur.first][cur.second.first][cur.second.second]=1;
-				int i=cur.first,j=cur.second.first,k=cur.second.second;
+				i=cur.first,j=cur.second.first,k=cur.second.second;
 				if(k<m-1 &&horcon(arr[i][j][k],arr[i][j][k+1])&& !vis[i][j][k+1]++)
-				{
 					bfs.push({i,{j,k+1}});
-				}
 				if(k &&horcon(arr[i][j][k-1],arr[i][j][k])&& !vis[i][j][k-1]++)
-				{
 					bfs.push({i,{j,k-1}});
-				}
 				if(j<n-1 && vertcon(arr[i][j][k],arr[i][j+1][k]) && !vis[i][j+1][k]++)
-				{
 					bfs.push({i,{j+1,k}});
-				}
 				if(j && vertcon(arr[i][j-1][k],arr[i][j][k]) && !vis[i][j-1][k]++)
-				{
 					bfs.push({i,{j-1,k}});
-				}
 				if(i<3&& !vis[i+1][j][k]++ )
-				{
 					bfs.push({i+1,{j,k}});
-				}
 				if(i==3 && !vis[0][j][k]++)
-				{
 					bfs.push({0,{j,k}});
-				}
 			}
 
 		}
 		if(!fl)
 			cout<<"-1\n";
 		else cout<<cnt<<"\n";
-
-
 	}
 	return 0;
 }
