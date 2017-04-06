@@ -92,9 +92,6 @@ int main()
 			good_so_far &= u_f.union_sets(x,y);
 
 		}
-		/*if (!good_so_far)
-			cout<<"!good_so_far";
-		else cout<<"YES!";*/
 		priority_queue<edge> q;
 		edge e(0,0,0);
 		for(int i=0;i<n;i++)
@@ -104,7 +101,6 @@ int main()
 				cost += e.cost; 
 				q.push(e);
 			}
-		//cout<<"got all input\n"<<endl;
 		int added = 0;
 		queue<II> add;
 		edge now;
@@ -113,14 +109,12 @@ int main()
 			now = q.top(); q.pop();
 			if(u_f.find_set(now.from) != u_f.find_set(now.to))
 			{
-				//cout<<now.from<<" "<<now.to<<"<\n";
 				added++;
 				add.push({now.from,now.to});
 				cost+=now.cost;
 				good_so_far &= u_f.union_sets(now.from,now.to);
 			}
 		}
-		//cout<<cost<<"\n";
 		if(added == 0)
 		{
 			cout<<"No new highways need\n";
@@ -129,8 +123,8 @@ int main()
 		{
 			while(!add.empty())
 			{
-					cout<<add.front().fr +1<<" "<<add.front().se +1<<"\n";
-					add.pop();
+				cout<<add.front().fr +1<<" "<<add.front().se +1<<"\n";
+				add.pop();
 			}
 		}
 		if(N)
