@@ -33,7 +33,6 @@ struct UnionFind{
 	{
 		if(rank[x]>rank[y]) swap(x,y);
 		parent[x] = y;
-		//if(rank[x] == rank[y]) rank[y]++;
 		rank[y]+=rank[x];
 	}
 	void union_sets(int x, int y)
