@@ -1,6 +1,7 @@
 *
 !*/
 !*.cpp
+!*.md
 resources/
 #!*.cpp
 #**/*.exe
