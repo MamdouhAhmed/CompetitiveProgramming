@@ -76,7 +76,6 @@ int main()
 		UnionFind u(n);
 		string s;
 		int v;
-		queue<edge> MEM;
 		forr(i,n)
 		{
 			forr(j,n)
@@ -89,7 +88,6 @@ int main()
 				}
 				if(s =="0")continue;
 				v = stoi(s);
-				//if(u.find_set(i),)
 				q.push(edge(i,j,v));
 			}
 		}	
@@ -102,7 +100,6 @@ int main()
 			{
 				u.union_sets(lord.from,lord.to);
 				cout<<(char)('A'+lord.from)<<"-"<<(char)('A'+lord.to)<<" "<<lord.cost<<"\n";
-				//MEM.push(lord);
 			}
 		}
 	}
