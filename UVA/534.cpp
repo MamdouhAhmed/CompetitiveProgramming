@@ -12,8 +12,7 @@ typedef long long ll;
 #define pb push_back
 #define dist(x,y,xx,yy) sqrt((x-xx)*(x-xx)+(y-yy)*(y-yy))
 ///////////////////// Solution Code
-int n;
-ll adj[110][110];
+
 int main()
 {
 	ios_base::sync_with_stdio(0);
@@ -28,35 +27,18 @@ int main()
 		freopen("/media/mamdouh/System/Users/Mamdouh/Desktop/A2.out","w",stdout);
 		#endif
 	#endif
-	
-	while(cin>>n&&n)
+	int n,cnt=1;
+	while(cin>>n && n)
 	{
-		
-		forr(i,n)forr(j,n) adj[i][j]=((i==j)?0:OO);
-		ll vv,x,c;
+		cout<<fixed<<setprecision(3);
+		double adj[n][n];
+		forr(i, n) forr(j, n) adj[i][j]= (OO*(i!=j));
+		int x[n], y[n];
 		forr(i,n)
-		{
-			cin>>vv;
-			forr(j,vv)
-			{
-				cin>>x>>c;
-				x--;
-				adj[i][x]=c;
-			}
-		}		forr(k,n) forr(i,n) forr(j,n)
-		if(adj[i][k]<OO && adj[k][j]<OO)
-			adj[i][j]= min(adj[i][j],adj[i][k]+adj[k][j]);
-		II minn= {OO,OO};
-		forr(i,n)
-		{
-			sort(adj[i],adj[i]+n);
-			if(adj[i][n-1]<OO)
-			{
-				minn = min(minn, {adj[i][n-1],i+1});
-			}
-		}
-		if(minn!=make_pair(OO,OO)) cout<<minn.se<<" "<<minn.fr<<"\n";
-		else cout<<"disjoint\n";
+		cin>>x[i]>>y[i];
+		forr(i, n) forr(j, n) adj[i][j]= dist(x[i],y[i],x[j],y[j]);
+		forr(k, n) forr(i, n) forr(j, n) adj[i][j]= min(adj[i][j], max(adj[i][k],adj[k][j]));
+		cout<<"Scenario #"<<cnt++<<"\nFrog Distance = "<<adj[0][1]<<"\n\n";
 	}
 	return 0;
 }
