@@ -42,10 +42,9 @@ int main()
 		maxx++;
 		ll adj [maxx][maxx];
 		forr(i,maxx) forr(j,maxx) adj[i][j]= (0);
-		forr(i,n)
-			adj[x[i]][y[i]]=1;
-		forr(k,maxx)forr(i,maxx)forr(j,maxx) adj[i][j]+=adj[i][k]*adj[k][j];
-		forr(k,maxx)if(adj[k][k])forr(i,maxx)forr(j,maxx) if(adj[i][k] && adj [k][j])adj[i][j]=-1LL;
+		forr(i,n)adj[x[i]][y[i]]=1;
+		forr(k,maxx)forr(i,maxx)forr(j,maxx)adj[i][j]+=adj[i][k]*adj[k][j];
+		forr(k,maxx)if(adj[k][k])forr(i,maxx)forr(j,maxx)if(adj[i][k] && adj [k][j])adj[i][j]=-1LL;
 		forr(i,maxx)forr(j,maxx) cout<<adj[i][j]<<((j<maxx-1)?" ":"\n");
 
 	}
