@@ -42,17 +42,14 @@ int main()
 		while(getline(cin,stt) && stt!="")
 		{
 			stringstream ss(stt);
-			ss>>x;
-			ss>>y;
+			ss>>x>>y;
 			xrr.pb(x);
 			yrr.pb(y);
-			
 		}
 		int maxx=0;
 		forr(i, xrr.size())
 		{
 			unordered_map<double, int> mmp;
-			
 			forr(j, xrr.size())
 			{
 				if(i==j) continue;
