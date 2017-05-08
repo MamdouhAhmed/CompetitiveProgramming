@@ -35,22 +35,24 @@ int main()
 	cin.ignore();
 	getline(cin,stt);
 	stt="*";
+	int xrr[750],yrr[750],p;
 	while(n--)
 	{
-		vector<int> xrr, yrr;
+		//vector<int> xrr, yrr;
 		int x,y;
+		p=0;
 		while(getline(cin,stt) && stt!="")
 		{
 			stringstream ss(stt);
 			ss>>x>>y;
-			xrr.pb(x);
-			yrr.pb(y);
+			xrr[p]=x;
+			yrr[p++]=y;
 		}
 		int maxx=0;
-		forr(i, xrr.size())
+		forr(i, p)
 		{
 			unordered_map<double, int> mmp;
-			forr(j, xrr.size())
+			forr(j, p)
 			{
 				if(i==j) continue;
 				x= xrr[j]-xrr[i];
