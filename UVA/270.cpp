@@ -30,7 +30,6 @@ int main()
 	#endif
 	int n;
 	cin>>n;
-
 	string stt;
 	cin.ignore();
 	getline(cin,stt);
@@ -38,7 +37,6 @@ int main()
 	int xrr[750],yrr[750],p;
 	while(n--)
 	{
-		//vector<int> xrr, yrr;
 		int x,y;
 		p=0;
 		while(getline(cin,stt) && stt!="")
@@ -49,6 +47,8 @@ int main()
 			yrr[p++]=y;
 		}
 		int maxx=0;
+		
+		double ang ;
 		forr(i, p)
 		{
 			unordered_map<double, int> mmp;
@@ -57,13 +57,14 @@ int main()
 				if(i==j) continue;
 				x= xrr[j]-xrr[i];
 				y= yrr[j]-yrr[i];
-				double ang = atan2(y,x)*180.0/PI;
+				ang = atan2(y,x)*180.0/PI;
 				if(ang <0) ang+=180;
 				mmp[ang]++;
 				maxx= max(maxx, mmp[ang]);
 			}
 		}
-		cout<<maxx+1<<"\n";
+		++maxx;
+		cout<<maxx<<"\n";
 		if(n) cout<<"\n";
 	}
 	return 0;
