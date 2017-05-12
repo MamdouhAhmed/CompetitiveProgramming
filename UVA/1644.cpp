@@ -46,10 +46,8 @@ int main()
 		kk = distance(arr, lower_bound(arr, arr+p, t));
 		if(arr[kk]==t)
 			cout<<"0\n";
-		else 
-		{
+		else
 			cout<<arr[kk]-arr[kk-1]<<"\n";
-		}
 	}
 	return 0;
 }
