@@ -44,10 +44,7 @@ int main()
 	while(cin>>t && t)
 	{
 		kk = distance(arr, lower_bound(arr, arr+p, t));
-		if(arr[kk]==t)
-			cout<<"0\n";
-		else
-			cout<<arr[kk]-arr[kk-1]<<"\n";
+		cout<<arr[kk]-arr[kk-(arr[kk]!=t)]<<"\n";
 	}
 	return 0;
 }
